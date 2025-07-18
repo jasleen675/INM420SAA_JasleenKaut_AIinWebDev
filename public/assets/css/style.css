@@ -1,26 +1,261 @@
-/* CSS */
-.persona-container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+@font-face {
+  font-family: 'MyFont';
+  src: url('../fonts/URWGeometricLight.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-@media (min-width: 768px) {
-  .persona-container {
-    flex-direction: row;
-  }
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    
+}
 
-  .left-column {
-    width: 40%;
-    padding-right: 20px;
-  }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    overflow: hidden;
+    font-family: 'MyFont', sans-serif;
+    letter-spacing: 0.75px; 
+    
+}
 
-  .right-column {
-    width: 60%;
-  }
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+/* Left section - Photo and name */
+.left-section {
+    flex: 1;
+    position: relative;
+}
+
+.image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.photo-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 40px;
 }
 
 .profile-photo {
-  max-width: 100%;
-  border-radius: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.name {
+    font-size: 4rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 6px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.tagline {
+    font-size: 1.4rem;
+    line-height: 1.2;
+    color: white;
+    font-style: italic;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    max-width: 300px;
+}
+
+/* Right section - Information */
+.right-section {
+    flex: 1;
+    background: linear-gradient(to bottom, #132138 0%, #132138 28%, #081125 28%, #081125 100%);
+    color: white;
+    padding: 35px 50px 0px 50px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+/* About section layout */
+.section {
+    margin-bottom: 60px;
+}
+
+.influences-spaced {
+    margin-top: 25px;
+}
+
+.about-section {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-info {
+    flex: 1;
+    min-width: 280px;
+    padding-top: 35px;
+}
+
+.section-title {
+    color: #e5982a;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.section-content {
+    font-size: 1rem;
+    line-height: 1.2;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+/* Info grid for About section */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px 0;
+    border-bottom: 2px solid #485669;
+}
+
+
+
+.label {
+    font-size: 0.85rem;
+    color: white;
+    font-style: italic;
+}
+
+.value {
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 500;
+}
+
+/* Skill dots */
+.skill-dots {
+    display: flex;
+    gap: 4px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #4a5568;
+}
+
+.dot.active {
+    background-color: #b8d54a;
+}
+
+/* Section rows for side-by-side layout */
+.section-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.section-row .section {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Bullet lists */
+.bullet-list {
+    list-style: none;
+    padding: 0;
+}
+
+.bullet-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    line-height: 1.25;
+    color: #e0e0e0;
+}
+
+.bullet-list li::before {
+    content: "●";
+    color: #b8d54a;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1rem;
+    line-height: 1.1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .left-section {
+        height: 50vh;
+        min-height: 300px;
+    }
+    
+    .name {
+        font-size: 3rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .right-section {
+        padding: 20px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .name {
+        font-size: 2.5rem;
+    }
+    
+    .photo-container {
+        padding: 20px;
+    }
+    
+    .right-section {
+        padding: 15px;
+    }
 }
