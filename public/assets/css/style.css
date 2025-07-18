@@ -17,7 +17,7 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    overflow: hidden;
+  
     font-family: 'MyFont', sans-serif;
     letter-spacing: 0.75px; 
     
@@ -27,7 +27,7 @@ body {
     display: flex;
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
+   
 }
 
 /* Left section - Photo and name */
@@ -85,7 +85,7 @@ body {
     background: linear-gradient(to bottom, #132138 0%, #132138 28%, #081125 28%, #081125 100%);
     color: white;
     padding: 35px 50px 0px 50px;
-    overflow: hidden;
+   
     overflow-y: auto;
 }
 
@@ -212,50 +212,97 @@ body {
     line-height: 1.1;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
+    /* Container stacked vertically, full width */
     .container {
         flex-direction: column;
         height: auto;
+        width: 100%;
+        gap: 0;
+        padding: 0;
+        margin: 0;
     }
-    
+
+    /* Left section full width and height auto to fit content */
     .left-section {
-        height: 50vh;
+        width: 100vw;           
+        height: auto;
         min-height: 300px;
     }
-    
-    .name {
-        font-size: 3rem;
+
+    .photo-container {
+        position: relative;
+        width: 100%;
+        height: 100vh; 
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; 
+        align-items: center;
+        padding: 40px; 
     }
-    
+
+    .profile-photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        z-index: -1; 
+    }
+
+    /* Name and tagline styles */
+    .name, .tagline {
+        position: relative;
+        margin-top: 10px;
+        padding: 0 10px;
+        text-align: center;
+        color: white;
+        text-shadow: 1.5px 1.5px 3px rgba(0,0,0,0.7);
+    }
+
+    .name {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
     .tagline {
         font-size: 1rem;
+        font-style: italic;
+        max-width: 80%;
+        line-height: 1.2;
     }
-    
+
+    /* Right section full width with comfortable padding */
     .right-section {
-        padding: 20px;
+        width: 100%;
+        background: linear-gradient(to bottom, #132138 0%, #132138 33%, #081125 33%, #081125 100%);
+        padding: 20px 20px 0 20px;
+        overflow: visible;
     }
-    
-    .info-grid {
-        grid-template-columns: 1fr;
+
+    /* About section stacked vertically with gaps */
+    .about-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
-    
+
+    .about-info {
+        padding-top: 20px;
+    }
+
+    /* Section rows stacked vertically, no horizontal gaps */
     .section-row {
         flex-direction: column;
         gap: 20px;
+        margin-bottom: 20px;
     }
-}
 
-@media (max-width: 480px) {
-    .name {
-        font-size: 2.5rem;
-    }
-    
-    .photo-container {
-        padding: 20px;
-    }
-    
-    .right-section {
-        padding: 15px;
+    /* Section bottom margin */
+    .section {
+        margin-bottom: 30px;
     }
 }
